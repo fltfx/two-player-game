@@ -18,21 +18,22 @@ class Game
     @currentPlayer = 1
     @p1 = p1
     @p2 = p2
-    #createQuestion
     loopQuestions
   end
 
+  #loop through the game questions!
   def loopQuestions
     check = true
     while (check)
       createQuestion
+      # if the game is over
       if @p1.score == 0
         check = false
         putsWinnerMsg(@p2)
       elsif @p2.score == 0
         check = false
         putsWinnerMsg(@p1)
-      else
+      else #if the game should continue
         puts "---- NEW TURN ----"
       end
     end  
@@ -46,14 +47,11 @@ class Game
 
   #switch currentPlayer
   def switchCurrentPlayer
-    #now switch player turn
-    #puts "the currentPlayer was: #{self.currentPlayer}"
     if self.currentPlayer == 1
       self.currentPlayer = 2
     else
       self.currentPlayer = 1
     end
-    #puts "the currentPlayer is NOW: #{self.currentPlayer}"
   end
 
   def getPlayerObj(currentPlayer)
@@ -66,7 +64,7 @@ class Game
 
   #input answer
   def inputAndCheckAnswer(a, p1, p2)
-    if @answer == a.to_i #correct
+    if @answer == a.to_i #player is correct
       puts "Player #{currentPlayer}: YES! You are correct"
       switchCurrentPlayer #switch current player
     else
