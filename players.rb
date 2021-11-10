@@ -1,18 +1,27 @@
-class players
-  attr_accessor :id
+class Players
+  attr_accessor :name, :id, :score
 
-  def initialize(id) #new initialize
-    @id = id
+  def initialize(n, i) #new initialize
+    @name = n
+    @id = i
+    @score = 3
+    confirmation
+  end
+
+  def confirmation
+    puts "#{self.name} is player #{@id}"
   end
 
   #update score
-  
+  def updateScore #'id' of loser!!!
+    @score -= 1
+  end
+
   #outputting score
-
-  #current player
-
-  #input answer
-
-  #method: check answer
+  def outputPlayerScore
+    return @score
+  end
 
 end
+
+
